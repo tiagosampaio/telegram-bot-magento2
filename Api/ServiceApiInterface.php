@@ -16,7 +16,7 @@ interface ServiceApiInterface
      * @throws \DI\DependencyException
      * @throws \DI\NotFoundException
      */
-    public static function get(string $token = null);
+    public function get(string $token = null);
 
     /**
      * @param string $token
@@ -24,5 +24,5 @@ interface ServiceApiInterface
      * @throws \DI\DependencyException
      * @throws \DI\NotFoundException
      */
-    public static function create(string $token);
+    public function create(string $token);
 }

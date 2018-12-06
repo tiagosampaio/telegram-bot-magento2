@@ -15,30 +15,24 @@ final class Api implements ServiceApiInterface
     /**
      * @var \Telegram\Api
      */
-    private static $instance;
+    private $instance;
 
     /**
-     * @param string|null $token
-     * @return \Telegram\Api|\Telegram\ApiInterface
-     * @throws \DI\DependencyException
-     * @throws \DI\NotFoundException
+     * {@inheritdoc}
      */
-    public static function get(string $token = null)
+    public function get(string $token = null)
     {
-        if (!self::$instance) {
-            self::$instance = self::create($token);
+        if (!$this->instance) {
+            $this->instance = self::create($token);
         }
 
-        return self::$instance;
+        return $this->instance;
     }
 
     /**
-     * @param string $token
-     * @return \Telegram\ApiInterface
-     * @throws \DI\DependencyException
-     * @throws \DI\NotFoundException
+     * {@inheritdoc}
      */
-    public static function create(string $token)
+    public function create(string $token)
     {
         return \Telegram\ApiFactory::create($token);
     }
